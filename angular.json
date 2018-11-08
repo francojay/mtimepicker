@@ -133,6 +133,41 @@
           }
         }
       }
+    },
+    "mtimepicker": {
+      "root": "projects/mtimepicker",
+      "sourceRoot": "projects/mtimepicker/src",
+      "projectType": "library",
+      "prefix": "enl",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/mtimepicker/tsconfig.lib.json",
+            "project": "projects/mtimepicker/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/mtimepicker/src/test.ts",
+            "tsConfig": "projects/mtimepicker/tsconfig.spec.json",
+            "karmaConfig": "projects/mtimepicker/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/mtimepicker/tsconfig.lib.json",
+              "projects/mtimepicker/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "mtimepicker-app"

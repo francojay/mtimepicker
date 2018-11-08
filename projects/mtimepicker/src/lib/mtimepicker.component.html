@@ -1,0 +1,19 @@
+<md-input-container [floatPlaceholder]="settings?.floatPlaceholder" class="timepicker-container" [class.required]="settings.required">
+  <input mdInput [(ngModel)]=" timeSelected" [placeholder]="settings.placeholder" (keydown)="timeKeydown($event)"
+    (blur)="timeOut($event)" [mdAutocomplete]="timeAC" [formControl]="timeCtrl" type="text" (click)="scrollToTime()"
+    class="timepicker-input">
+  <button class="btn-dropdown" md-raised-button type="button"></button>
+  <md-icon (click)="clearTime()" class="md-dropdown">arrow_drop_down</md-icon>
+</md-input-container>
+<md-autocomplete id="time" #timeAC="mdAutocomplete">
+  <div #timeScroller class="timeScroller">
+    <md-option *ngFor="let t of filteredTime | async; let i = index;" (click)="selectTime(t, i)">
+      <div>
+        <div class="md-option-time-right am-icon">
+          <span class="time-label">{{ t | date : 'aa' }}</span>
+        </div>
+        <div class="md-option-time-left" style="font-size: 21px;">{{ t | date : 'h:mm' }}</div>
+      </div>
+    </md-option>
+  </div>
+</md-autocomplete>
